@@ -63,8 +63,8 @@ export default {
   data() {
     return {
       user: {
-        mobile: "",
-        code: "",
+        mobile: "13911111111",
+        code: "246810",
       },
       formRule: {
         mobile: [
@@ -96,6 +96,10 @@ export default {
       try {
         const res = await login(this.user);
         Toast.success("登录成功");
+        // 将token放到Vuex中
+        this.$store.commit("setUser", res.data.data);
+
+        this.$router.back();
       } catch (err) {
         Toast.fail("登录失败");
       }
