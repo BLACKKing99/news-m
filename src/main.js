@@ -17,7 +17,7 @@ import './styles/index.less'
 // 自动设置 REM基准值 (html标签字体大小)
 import 'amfe-flexible'
 
-
+import './util/day'
 
 Vue.use(Vant);
 

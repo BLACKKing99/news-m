@@ -34,3 +34,15 @@ export const getCurrentInfo = () => {
         // }
     })
 }
+// 获取登录用户频道列表
+export const getLoadChannels = () => {
+    return request({
+        method: 'GET',
+        url: 'app/v1_0/user/channels',
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+
+
