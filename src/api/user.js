@@ -45,4 +45,15 @@ export const getLoadChannels = () => {
     })
 }
 
+// 获取登录用户所有频道列表
+export const getAllLoadChannels = () => {
+    return request({
+        method: 'GET',
+        url: 'app/v1_0/channels',
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+
 

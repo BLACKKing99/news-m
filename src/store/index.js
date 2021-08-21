@@ -13,7 +13,6 @@ export default new Vuex.Store({
   mutations: {
     setUser(state, data) {
       state.user = data
-
       // 数据持久化
       setItem(USER_KEY, state.user)
     }
