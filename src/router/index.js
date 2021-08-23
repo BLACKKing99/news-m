@@ -40,6 +40,18 @@ const routes = [
     name: 'Search',
     component: () => import('@/views/search/')
   },
+  {
+    path: '/detail/:detailId',
+    name: 'detail',
+    component: () => import('@/views/detail/'),
+    // 将动态路由参数映射到组件props中
+    props: true,
+  },
+  {
+    path: '/userInfo',
+    name: 'userInfo',
+    component: () => import('@/views/userInfo/')
+  }
 
 ]
 

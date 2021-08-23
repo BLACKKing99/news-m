@@ -18,7 +18,9 @@
         >
         </van-image>
         <div slot="title" class="user-name">{{ currentUserInfo.name }}</div>
-        <van-button size="small" round class="update-data">编辑资料</van-button>
+        <van-button size="small" round class="update-data" to="/userInfo"
+          >编辑资料</van-button
+        >
       </van-cell>
       <van-grid :border="false" class="data-info">
         <van-grid-item class="data-info-item">

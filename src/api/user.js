@@ -56,4 +56,66 @@ export const getAllLoadChannels = () => {
     })
 }
 
+// 关注用户
+export const addFollow = (userId) => {
+    return request({
+        method: 'POST',
+        url: 'app/v1_0/user/followings',
+        data: {
+            target: userId
+        }
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+
+// 取消关注用户
+export const deleteFollow = (target) => {
+    return request({
+        method: 'DELETE',
+        url: `app/v1_0/user/followings/${target}`,
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+
+
+
+// 获取用户资料
+export const getUserInfo = () => {
+    return request({
+        method: 'GET',
+        url: `app/v1_0/user/profile`,
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+// 编辑用户资料
+export const editorUserInfo = (data) => {
+    return request({
+        method: 'PATCH',
+        url: `app/v1_0/user/profile`,
+        data
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+// 编辑用户照片资料
+export const editorUserPhoto = (data) => {
+    return request({
+        method: 'PATCH',
+        url: `app/v1_0/user/photo`,
+        data
+        // headers: {
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}
+
+
+
 
