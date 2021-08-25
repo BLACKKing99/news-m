@@ -1,7 +1,9 @@
 <template>
   <div class="layout-container">
     <!-- 子路由出口 -->
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <!-- 子路由出口 -->
     <van-tabbar v-model="active" route>
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
@@ -14,13 +16,15 @@
 
 <script>
 export default {
-  name: "",
+  name: "LayOut",
   data() {
     return {
       active: 0,
     };
   },
-
+  mounted() {
+    this.$store.commit("addCachePages", "LayOut");
+  },
   components: {},
 
   computed: {},

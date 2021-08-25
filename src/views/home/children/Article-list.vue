@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list">
+  <div class="article-list" ref="article-list">
     <van-pull-refresh
       v-model="refreshing"
       @refresh="onRefresh"
@@ -24,6 +24,7 @@
 <script>
 import { getNewsRecommend } from "@/api/article";
 import ArticleItem from "../../../components/Article-item.vue";
+import { debounce } from "lodash";
 export default {
   name: "ArticleList",
   data() {
@@ -33,6 +34,7 @@ export default {
       finished: false, //加载结束中的状态
       refreshing: false, //下拉刷新状态
       tiemstamp: null,
+      scrollTop: 0, //列表滚动到顶部的距离
     };
   },
   props: {
@@ -44,7 +46,20 @@ export default {
   components: {
     ArticleItem,
   },
+  mounted() {
+    const articleList = this.$refs["article-list"];
+    articleList.onscroll = debounce(() => {
+      this.scrollTop = articleList.scrollTop;
+    }, 50);
+  },
 
+  activated() {
+    // 进入缓存被激活
+    this.$refs["article-list"].scrollTop = this.scrollTop;
+  },
+  deactivated() {
+    // 离开缓存被激活
+  },
   computed: {},
 
   methods: {

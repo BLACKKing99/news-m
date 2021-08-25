@@ -99,7 +99,12 @@ export default {
         // 将token放到Vuex中
         this.$store.commit("setUser", res.data.data);
 
-        this.$router.back();
+        // 清除layout的缓存,让它重新渲染
+        this.$store.commit("removeCachePages", "LayOut");
+
+        // this.$router.back()这个方法有问题
+        // this.$router.back();
+        this.$router.push(this.$route.query.redirect || "/");
       } catch (err) {
         Toast.fail("登录失败");
       }

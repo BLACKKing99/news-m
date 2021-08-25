@@ -57,7 +57,14 @@
           src="~@/assets/profile/mobile.png"
           alt=""
           class="header-img"
-          @click="$router.push('/login')"
+          @click="
+            $router.push({
+              name: 'Login',
+              query: {
+                redirect: '/profile',
+              },
+            })
+          "
         />
       </div>
       <div class="not-login-text">登录/注册</div>
@@ -77,7 +84,7 @@
       />
     </van-grid>
     <van-cell title="消息通知" is-link to="" :border="false" />
-    <van-cell title="小智同学" is-link to="" />
+    <van-cell title="小智同学" is-link to="/userChat" />
     <van-cell
       v-if="user"
       value="退出登录"

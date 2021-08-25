@@ -64,7 +64,7 @@
           class="good-job"
           @click="onGoodJob"
         />
-        <van-icon name="share" class="share" />
+        <van-icon name="share" class="share" @click="isShowShare = true" />
       </van-tabbar>
       <comment-list
         :source="detailId"
@@ -105,6 +105,11 @@
         @reply-comment="onReplyComment"
       ></comment-list>
     </van-popup>
+    <van-share-sheet
+      v-model="isShowShare"
+      title="立即分享给好友"
+      :options="options"
+    />
   </div>
 </template>
 
@@ -142,6 +147,14 @@ export default {
       isReplyShow: false,
       presentComment: {},
       isShowComment: false, //用来留言框弹出
+      isShowShare: false,
+      options: [
+        { name: "微信", icon: "wechat" },
+        { name: "微博", icon: "weibo" },
+        { name: "复制链接", icon: "link" },
+        { name: "分享海报", icon: "poster" },
+        { name: "二维码", icon: "qrcode" },
+      ],
     };
   },
   props: {

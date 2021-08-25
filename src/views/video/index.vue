@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { getVideo } from "@/api/video";
 export default {
   name: "",
   data() {
@@ -10,10 +11,16 @@ export default {
   },
 
   components: {},
-
+  created() {
+    this.loadGetVideo();
+  },
   computed: {},
 
-  methods: {},
+  methods: {
+    async loadGetVideo() {
+      const data = await getVideo();
+    },
+  },
 };
 </script>
 <style lang='css' scoped>
